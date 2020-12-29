@@ -12,8 +12,17 @@ namespace CountdownTimer
             Console.WriteLine("Starting count down..");
             while (true)
             {
-                var delta = target - DateTime.Now;
-                var line = string.Format("{0:00}:{1:00}:{2:00}", Math.Floor(delta.TotalHours), delta.Minutes, delta.Seconds);
+                string line;
+                if (target <= DateTime.Now)
+                {
+                    line = "Happy New Year!";
+                }
+                else
+                {
+                    var delta = target - DateTime.Now;
+                    line = string.Format("{0:00}:{1:00}:{2:00}", Math.Floor(delta.TotalHours), delta.Minutes, delta.Seconds);
+                }
+
                 try
                 {
                     Console.Write("\r{0}", line);
